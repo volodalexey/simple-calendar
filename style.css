@@ -1,0 +1,36 @@
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.month-table {
+    border: 1px solid black;
+    margin: 10px;
+}
+.month-table.current-month {
+    border: 1px solid #228b22;
+}
+.week-days-title {
+    background-color: #808080;
+}
+.week-days-title > th {
+    color: #ffffff;
+    border: 1px solid black;
+}
+.week-days-title > th:nth-last-child(1),
+.week-days-title > th:nth-last-child(2) {
+    background-color: #ff0000;
+}
+.month-table > tbody > tr > .current-day {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #228b22;
+}
+.month-table > tbody > tr > .current-month-day {
+    border: 1px solid black;
+}
+.month-table > tbody > tr > .next-month-day,
+.month-table > tbody > tr > .previous-month-day {
+    color: #b0b0b0;
+}
