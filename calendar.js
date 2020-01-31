@@ -65,11 +65,11 @@ function generateDayInMonthView(iterDate, curMonthDate, curDay) {
     return ret
 }
 
-function generateWeekInMonthView(inIterDate, curMonthDate, curDay) {
+function generateWeekInMonthView(inIterDate, orderedMonthDate, curDay) {
     const iterDate = cloneDate(inIterDate);
     const arrWeek = [];
     for (let i = 0; i < 7; i++) {
-        arrWeek.push(generateDayInMonthView(iterDate, curMonthDate, curDay));
+        arrWeek.push(generateDayInMonthView(iterDate, orderedMonthDate, curDay));
         iterDate.setDate(iterDate.getDate() + 1);
     }
     return arrWeek
@@ -96,10 +96,12 @@ function generateDayNumber(sd) {
 
 function calcCalendarData(monthOffset, config = {}) {
     const curMonthDate = new Date();
-    if (typeof monthOffset === 'number') {
+    const isOffsetProvided = typeof monthOffset === 'number';
+    if (isOffsetProvided) {
+        curMonthDate.setDate(15); // https://stackoverflow.com/questions/44285996/javascript-is-giving-invalid-month-when-month-is-set-to-5
         curMonthDate.setMonth(curMonthDate.getMonth() + monthOffset);
     }
-    const curMonthDay = !monthOffset && curMonthDate.getDate();
+    const curMonthDay = !isOffsetProvided && new Date().getDate();
     let weekStartsOn = 1;
 
     switch (config.weekStartsOn) {
