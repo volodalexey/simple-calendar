@@ -34,3 +34,6 @@
 .month-table > tbody > tr > .previous-month-day {
     color: #b0b0b0;
 }
+.month-table > tbody > tr > td.selected {
+    background-color: rgba(29, 22, 220, 0.604);
+}
